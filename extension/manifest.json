@@ -1,0 +1,59 @@
+{
+  "manifest_version": 3,
+  "name": "__MSG_extName__",
+  "short_name": "UABC",
+  "description": "__MSG_extDescription__",
+  "version": "0.1.0",
+  "default_locale": "en",
+  "minimum_chrome_version": "116",
+  "key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAsuilaC+haKPgWjytexK7NMFhOnNSFROWfwKGnPNCgOOvlxFEXd72o2+cK7wX4IPTGREUdQN2cSvwnc7Hed9Ja4Xjr4MkOtqxB5yb+Pmp9Y6EwFBK95egn36gUboHLBKxscEi8qzFtSMuM4RF6m5NS72wguODOgLLjcfgywtum0iHRPJgnUHUXlC7oI73jw+P95ACXaPKbWLLDO/Hjo1bLddq7UH617sr/Q+RjNCzd51G4LbSqQcrDsv9vh9sJjrZjvZhnckmMUvchsCUkyMBmO0cJe91XLTmwzJ8PMRsDSuL7PFvuFekaw5GUDm1PJtXqZONhz3KSdmkhcmaPGKCqwIDAQAB",
+  "icons": {
+    "16": "icons/16.png",
+    "32": "icons/32.png",
+    "48": "icons/48.png",
+    "128": "icons/128.png"
+  },
+  "action": {
+    "default_title": "__MSG_actionTitle__",
+    "default_popup": "popup.html",
+    "default_icon": {
+      "16": "icons/16.png",
+      "32": "icons/32.png"
+    }
+  },
+  "background": {
+    "service_worker": "background.js",
+    "type": "module"
+  },
+  "options_page": "options.html",
+  "side_panel": {
+    "default_path": "sidepanel.html"
+  },
+  "permissions": [
+    "nativeMessaging",
+    "debugger",
+    "tabs",
+    "tabGroups",
+    "scripting",
+    "storage",
+    "alarms",
+    "sidePanel"
+  ],
+  "host_permissions": [
+    "<all_urls>"
+  ],
+  "commands": {
+    "toggle-pause": {
+      "suggested_key": {
+        "default": "Alt+Shift+K"
+      },
+      "description": "__MSG_cmdTogglePause__"
+    },
+    "open-assistant": {
+      "suggested_key": {
+        "default": "Alt+Shift+U"
+      },
+      "description": "__MSG_cmdOpenAssistant__"
+    }
+  }
+}

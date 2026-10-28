@@ -1,0 +1,13 @@
+/target/
+node_modules/
+extension/dist/
+extension/*.zip
+*.log
+.DS_Store
+# Secrets never belong in the repository
+.env
+.env.*
+*.pem
+*.key
+*.p12
+*.pfx

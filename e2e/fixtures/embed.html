@@ -1,0 +1,13 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8"><title>Checkout</title></head>
+<body style="font: 16px system-ui, sans-serif; margin: 24px">
+<h1>Checkout</h1>
+<p>Card details are collected by an embedded payment widget from another site:</p>
+<iframe id="pay" title="Payment widget" style="width: 420px; height: 120px; border: 1px solid #999"></iframe>
+<script>
+  // The widget lives on a different origin (another port of the test server).
+  document.getElementById('pay').src = new URLSearchParams(location.search).get('widget');
+</script>
+</body>
+</html>

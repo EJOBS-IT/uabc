@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>UABC assistant</title>
+<link rel="stylesheet" href="ui.css">
+</head>
+<body class="panel">
+<header>
+  <img src="icons/32.png" alt="" width="20" height="20">
+  <label class="sr-only" for="model">Model</label>
+  <select id="model" title="Model"></select>
+  <button id="new" class="icon" title="New chat" aria-label="New chat">＋</button>
+  <button id="settings" class="icon" title="Settings" aria-label="Settings">⚙</button>
+</header>
+<div id="banner"></div>
+<main id="log" aria-live="polite"></main>
+<div id="usage" class="usage"></div>
+<div class="composer">
+  <label class="sr-only" for="input">Message</label>
+  <textarea id="input" rows="2" placeholder="Ask UABC to do something in the browser… (বাংলাতেও লিখতে পারেন)"></textarea>
+  <button id="send" class="primary">Send</button>
+</div>
+<script src="sidepanel.js"></script>
+</body>
+</html>

@@ -1,0 +1,26 @@
+name: Feature request
+description: Suggest a new capability or an improvement.
+labels: [enhancement]
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: The problem
+      description: What are you trying to do, and what gets in the way today?
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: What you propose
+    validations:
+      required: true
+  - type: textarea
+    id: safety
+    attributes:
+      label: Safety
+      description: How could this be misused by a web page or a misbehaving agent, and how should UABC prevent that?
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives you considered

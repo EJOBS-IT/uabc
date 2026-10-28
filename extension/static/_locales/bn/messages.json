@@ -1,0 +1,17 @@
+{
+  "extName": {
+    "message": "UABC – ইউনিভার্সাল এআই ব্রাউজার কন্ট্রোলার"
+  },
+  "extDescription": {
+    "message": "এআই কাজ করবে আপনার ব্রাউজারে: নিজের API Key দিয়ে বিল্ট-ইন চ্যাট, অথবা Claude Code, Codex-এর মতো টুল। প্রতিটি সাইটে অনুমতি আপনার।"
+  },
+  "actionTitle": {
+    "message": "UABC: এআই ব্রাউজার কন্ট্রোল"
+  },
+  "cmdTogglePause": {
+    "message": "এআই কন্ট্রোল থামান বা চালু করুন"
+  },
+  "cmdOpenAssistant": {
+    "message": "UABC অ্যাসিস্ট্যান্ট খুলুন (সাইড প্যানেল)"
+  }
+}

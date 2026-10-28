@@ -1,0 +1,17 @@
+{
+  "extName": {
+    "message": "UABC – Universal AI Browser Controller"
+  },
+  "extDescription": {
+    "message": "AI that works in your own browser: built-in chat with your API key, or Claude Code, Codex and other AI tools. You approve each site."
+  },
+  "actionTitle": {
+    "message": "UABC: AI browser control"
+  },
+  "cmdTogglePause": {
+    "message": "Pause or resume AI control"
+  },
+  "cmdOpenAssistant": {
+    "message": "Open the UABC assistant (side panel)"
+  }
+}

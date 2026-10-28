@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Contact form</title>
+<style>
+  body { font: 16px system-ui, sans-serif; margin: 24px; max-width: 520px; }
+  label { display: block; margin: 10px 0 4px; }
+  input, select, textarea { font: inherit; width: 100%; box-sizing: border-box; }
+  input[type=checkbox] { width: auto; }
+  #notes { border: 1px solid #999; min-height: 40px; padding: 4px; }
+  .fancy { display: inline-block; padding: 6px 12px; background: #eee; cursor: pointer; margin: 12px 0; }
+</style>
+</head>
+<body>
+<h1>Contact us</h1>
+<form id="f">
+  <label for="name">Full name</label>
+  <input id="name" name="name" required>
+  <label for="email">Email</label>
+  <input id="email" type="email" name="email">
+  <label for="country">Country</label>
+  <select id="country" name="country">
+    <option value="">Choose…</option>
+    <option value="bd">Bangladesh</option>
+    <option value="in">India</option>
+    <option value="np">Nepal</option>
+  </select>
+  <label for="password">Password</label>
+  <input id="password" type="password" name="password" value="hunter2">
+  <label for="card">Card number</label>
+  <input id="card" name="cardnumber" autocomplete="cc-number">
+  <label for="bio">About you</label>
+  <textarea id="bio" name="bio"></textarea>
+  <label>Notes</label>
+  <div id="notes" contenteditable="true" aria-label="Notes"></div>
+  <label><input type="checkbox" id="agree" name="agree"> I agree to the terms</label>
+  <div class="fancy" id="fancy">Fancy button</div>
+  <button type="submit">Send message</button>
+</form>
+<pre id="result"></pre>
+<script>
+  const clicks = [];
+  document.addEventListener('click', (e) => clicks.push({ trusted: e.isTrusted, target: e.target.id || e.target.tagName }), true);
+  document.getElementById('fancy').addEventListener('click', (e) => { e.currentTarget.textContent = 'Fancy clicked'; });
+  document.getElementById('f').addEventListener('submit', (e) => {
+    e.preventDefault();
+    const fd = new FormData(e.target);
+    document.getElementById('result').textContent = JSON.stringify({
+      submitted: true, name: fd.get('name'), email: fd.get('email'), country: fd.get('country'),
+      agree: fd.get('agree') === 'on', bio: fd.get('bio'), notes: document.getElementById('notes').innerText,
+      password: fd.get('password'), clicks,
+    });
+  });
+</script>
+</body>
+</html>

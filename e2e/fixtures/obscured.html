@@ -1,0 +1,15 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8"><title>Shop</title></head>
+<body style="font: 16px system-ui, sans-serif; margin: 24px">
+<h1>Shop</h1>
+<button id="buy" onclick="document.getElementById('status').textContent = 'Bought!'">Buy now</button>
+<p id="status"></p>
+<div id="banner" role="dialog" aria-label="Cookie consent"
+     style="position: fixed; inset: 0; background: rgba(0,0,0,.5); display: flex; align-items: center; justify-content: center">
+  <div style="background: #fff; padding: 20px">We use cookies.
+    <button id="accept" onclick="document.getElementById('banner').remove()">Accept</button>
+  </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,12 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8"><title>Long page</title></head>
+<body style="font: 16px system-ui, sans-serif; margin: 24px">
+<h1>Long page</h1>
+<p><a href="/form.html" id="to-form">Go to the contact form</a></p>
+<p><a href="/form.html?popup=1" target="_blank" id="new-tab">Open the form in a new tab</a></p>
+<button id="load" onclick="setTimeout(() => { const p = document.createElement('p'); p.textContent = 'Results loaded: 42 items'; document.body.append(p); }, 600)">Load more</button>
+<div style="height: 3000px; background: linear-gradient(#fff, #ddd)">spacer</div>
+<button id="bottom" onclick="this.textContent = 'Bottom clicked'">Bottom button</button>
+</body>
+</html>

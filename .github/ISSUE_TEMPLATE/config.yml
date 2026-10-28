@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Report a security vulnerability
+    url: https://github.com/EJOBS-IT/uabc/security/advisories/new
+    about: Privately, so it can be fixed before it is public.
+  - name: Ask a question
+    url: https://github.com/EJOBS-IT/uabc/discussions
+    about: Setup help, ideas and how-to questions.

@@ -1,0 +1,71 @@
+name: Release
+
+# Draft release with binaries for every platform and the Chrome Web Store zip.
+# TODO(M1/M2): replace with cargo-dist installers, add Authenticode signing
+# (Azure Trusted Signing) and Apple notarization, publish SLSA provenance.
+
+on:
+  push:
+    tags: ['v*']
+
+permissions:
+  contents: write
+
+jobs:
+  binaries:
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - { os: ubuntu-latest, target: x86_64-unknown-linux-gnu, bin: uabc }
+          - { os: ubuntu-24.04-arm, target: aarch64-unknown-linux-gnu, bin: uabc }
+          - { os: macos-latest, target: aarch64-apple-darwin, bin: uabc }
+          - { os: macos-13, target: x86_64-apple-darwin, bin: uabc }
+          - { os: windows-latest, target: x86_64-pc-windows-msvc, bin: uabc.exe }
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: dtolnay/rust-toolchain@stable
+        with:
+          targets: ${{ matrix.target }}
+      - run: cargo build --release --locked --target ${{ matrix.target }}
+      - name: Package
+        shell: bash
+        run: |
+          mkdir dist
+          cp target/${{ matrix.target }}/release/${{ matrix.bin }} dist/
+          cp LICENSE README.md dist/
+          cd dist && tar czf ../uabc-${{ github.ref_name }}-${{ matrix.target }}.tar.gz *
+      - uses: actions/upload-artifact@v4
+        with:
+          name: uabc-${{ matrix.target }}
+          path: uabc-*.tar.gz
+
+  extension:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci && npm run build:ext:store
+      - uses: actions/upload-artifact@v4
+        with:
+          name: extension
+          path: extension/uabc-extension-*.zip
+
+  publish:
+    needs: [binaries, extension]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          merge-multiple: true
+      - run: sha256sum uabc-* > SHA256SUMS
+      - uses: softprops/action-gh-release@v2
+        with:
+          draft: true
+          files: |
+            uabc-*
+            SHA256SUMS
