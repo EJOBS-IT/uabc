@@ -50,7 +50,7 @@ jobs:
         run: npm run build:ext:store
       - name: Store package must not contain the dev key
         run: "! unzip -p extension/uabc-extension-*.zip manifest.json | grep -q '\"key\"'"
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v7
         with:
           name: extension-store-zip
           path: extension/uabc-extension-*.zip
